@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\GenreController;
+use App\Http\Controllers\CategoryController;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/home', [ArticleController::class, 'home']);
 
 Route::get('/about', [ArticleController::class, 'about']);
@@ -24,4 +26,10 @@ Route::get('/articles', [ArticleController::class, 'index']);
 
 Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
 
-Route::get('/categories', [GenreController::class, 'genre']);
+Route::get('/categories', [CategoryController::class, 'category']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard.add', [
+        "title" => "Dashboard"
+    ]);
+});

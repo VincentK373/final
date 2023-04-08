@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\User;
-use App\Models\Genre;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-        Article::factory(25)->create();
+        User::factory(20)->create();
+        Article::factory(200)->create();
         User::create([
             'name' => 'Vincent',
             'username' => 'v234',
@@ -25,15 +25,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        Genre::create([
+        Category::create([
             'name' => 'Programming',
             'slug' => 'programming'
         ]);
-        Genre::create([
+        Category::create([
             'name' => 'Web',
             'slug' => 'web'
         ]);
-        Genre::create([
+        Category::create([
             'name' => 'Business',
             'slug' => 'business'
         ]);

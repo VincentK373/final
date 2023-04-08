@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Article;
@@ -25,7 +25,7 @@ class ArticleController extends Controller
     {
         $title = '';
         if (request('category')) {
-            $category = Genre::firstWhere('slug', request('category'));
+            $category = Category::firstWhere('slug', request('category'));
             $title = ' in ' . $category->name;
         }
         if (request('author')) {

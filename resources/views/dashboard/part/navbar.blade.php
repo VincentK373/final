@@ -13,18 +13,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('home*') ? 'active' : '' }}" href="/home"aria-current="page"
-                        href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('about*') ? 'active' : '' }}" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('articles*') ? 'active' : '' }}" href="/articles">Articles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}"
-                        href="/categories">Categories</a>
+                    <a class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}"
+                        href="/home"aria-current="page" href="/">Dashboard</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">

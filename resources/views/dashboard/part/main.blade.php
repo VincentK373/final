@@ -33,7 +33,7 @@
 
     {{-- <body style="background: linear-gradient(rgb(147, 157, 254), rgb(199, 142, 255));"> --}}
 
-    @include('home.part.navbar')
+    @include('dashboard.part.navbar')
     <div class="container">
         @yield('container')
     </div>
