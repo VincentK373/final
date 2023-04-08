@@ -49,5 +49,12 @@ Route::get('/dashboard/manage-users', function () {
 })->middleware('auth');
 
 Route::get('/dashboard/manage-categories', [CategoryController::class, 'manage'])->middleware('auth');
+Route::post('/dashboard/manage-categories', [CategoryController::class, 'store'])->middleware('auth');
+
+Route::post('/dashboard/change-profile', [DashboardController::class, 'change'])->middleware('auth');
+
+Route::get('/dashboard/my-profile', [DashboardController::class, 'profile'])->middleware('auth');
+// Route::delete('/dashboard/manage-categories/{slug}', CategoryController::class, 'delete')->middleware('auth');
+
 
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');

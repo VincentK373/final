@@ -1,5 +1,6 @@
 <div class="sidebar">
-    <a href="#" class="sidebar-link {{ Request::is('dashboard/profile') ? 'active' : '' }}">My Profile</a>
+    <a href="/dashboard/my-profile" class="sidebar-link {{ Request::is('dashboard/profile') ? 'active' : '' }}">My
+        Profile</a>
     <a href="/dashboard/create" class="sidebar-link {{ Request::is('dashboard/create') ? 'active' : '' }}">Add
         Posts</a>
     <a href="/dashboard" class="sidebar-link {{ Request::is('dashboard') ? 'active' : '' }}">Manage Posts</a>

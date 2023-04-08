@@ -17,6 +17,7 @@
                         <tr>
                             <th style="width: 5%;">No.</th>
                             <th style="width: 50%;">Category</th>
+                            <th style="width: 20%;">Delete</th>
                         </tr>
                     </thead>
                     <tbody style="justify-content: center">
@@ -24,15 +25,42 @@
                             <tr>
                                 <td style="text-align: center">{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
+                                <td style="text-align:center">
+                                    <form action="/dashboard/manage-categories/{{ $category->slug }}" method="POST"
+                                        class="d-inline" onclick="return confirm('Are You Sure?')">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="badge bg-danger border-0"><i class="bi bi-trash3"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <h2>
-                    Create Category
-                </h2>
 
+            </div>
+            <h2>
+                Create Category
+            </h2>
 
+            <div class="form col-lg-8">
+                <main class="form-registration w-100 m-auto">
+                    <form method="POST" action='/dashboard/manage-categories' class="mb-5">
+                        @csrf
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                            name="name" required>
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <button class="btn btn-primary mt-1" type="submit"
+                            style="background-color:rgb(144, 68, 199); color:white; border:0
+                        ">Create
+                            Category</button>
+                    </form>
+                </main>
             </div>
 
 
