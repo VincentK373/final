@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LogInController;
+use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\DashboardController;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/home', [ArticleController::class, 'home']);
+Route::get('/', [ArticleController::class, 'home']);
 
 Route::get('/about', [ArticleController::class, 'about']);
 
@@ -28,8 +32,22 @@ Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
 
 Route::get('/categories', [CategoryController::class, 'category']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard.add', [
-        "title" => "Dashboard"
+// 
+Route::get('/login', [LogInController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [LogInController::class, 'auth']);
+Route::get('/signup', [SignUpController::class, 'signup'])->middleware('guest');
+Route::post('/signup', [SignUpController::class, 'store']);
+Route::post('/logout', [LogInController::class, 'logout']);
+
+Route::get('/dashboard/checkslug', [DashboardController::class, 'checkslug'])->middleware('auth');
+
+Route::get('/dashboard/manage-users', function () {
+    return view('dashboard.manageuser', [
+        'users' => User::orderBy('name')->get(),
+        'title' => 'Dashboard',
     ]);
-});
+})->middleware('auth');
+
+Route::get('/dashboard/manage-categories', [CategoryController::class, 'manage'])->middleware('auth');
+
+Route::resource('/dashboard', DashboardController::class)->middleware('auth');

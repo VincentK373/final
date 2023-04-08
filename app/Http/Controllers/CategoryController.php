@@ -15,4 +15,11 @@ class CategoryController extends Controller
             'categories' => Category::orderBy('name')->get(),
         ]);
     }
+    public function manage()
+    {
+        return view('dashboard.managecategory', [
+            'title' => 'Dashboard',
+            'categories' => Category::orderBy('name')->get(),
+        ]);
+    }
 }
