@@ -1,6 +1,6 @@
 @extends('home.part.main')
 @section('container')
-    <div class="container mb-5" style="margin-top: 80px">
+    <div class="container mb-5" style="margin-top: 80px" style="font-family: 'poppins'">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1 class="mb-1"><b>{{ $article->title }}</b></h1>

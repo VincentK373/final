@@ -1,6 +1,6 @@
 @extends('home.part.main')
 @section('container')
-    <div class="container2" style="font-family: 'Times New Roman', Times, serif">
+    <div class="container2" style="font-family: 'poppins', Times, serif">
         <h1 style="margin-top: 100px; display:block; text-align:center"><b>All Categories</b></h1>
         <br>
         <div class="container">

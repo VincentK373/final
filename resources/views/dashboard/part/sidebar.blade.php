@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <a href="/dashboard/my-profile" class="sidebar-link {{ Request::is('dashboard/profile') ? 'active' : '' }}">My
+    <a href="/dashboard/my-profile" class="sidebar-link {{ Request::is('dashboard/my-profile') ? 'active' : '' }}">My
         Profile</a>
     <a href="/dashboard/create" class="sidebar-link {{ Request::is('dashboard/create') ? 'active' : '' }}">Add
         Posts</a>
@@ -7,7 +7,7 @@
     <a href="/dashboard/manage-users"
         class="sidebar-link {{ Request::is('dashboard/manage-users') ? 'active' : '' }}">Manage Users</a>
     <a href="/dashboard/manage-categories"
-        class="sidebar-link {{ Request::is('dashboard/manage-user') ? 'active' : '' }}">Manage
+        class="sidebar-link {{ Request::is('dashboard/manage-categories') ? 'active' : '' }}">Manage
         Categories</a>
 </div>
 

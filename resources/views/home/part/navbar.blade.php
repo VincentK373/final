@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-    style="font-family: 'Times New Roman', Times, serif; font-size: large">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="font-family: 'poppins'; font-size: large">
     <div class="container">
         <a class="navbar-brand" style="color: black"href="/">
             <span style="color: white; font-size:larger"><b>On</b></span><span
@@ -13,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('home*') ? 'active' : '' }}" href="/home"aria-current="page"
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/home"aria-current="page"
                         href="/">Home</a>
                 </li>
                 <li class="nav-item">
@@ -32,7 +31,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Welcome Back, {{ auth()->user()->name }}
+                            Welcome Back, {{ auth()->user()->username }}
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-window-reverse"></i>

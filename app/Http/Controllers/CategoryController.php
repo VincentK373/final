@@ -25,7 +25,6 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
-        // return $request->all();
         $validated = $request->validate([
             'name' => 'required|unique:categories',
         ]);

@@ -127,14 +127,27 @@ class DashboardController extends Controller
         $slug = SlugService::createSlug(Article::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
-    public function profile(Request $request)
+    public function profile()
     {
         return view('dashboard.profile', [
             'title' => 'Dashboard',
-            'name' => auth()->user()->name,
+            'first_name' => auth()->user()->first_name,
+            'last_name' => auth()->user()->last_name,
             'username' => auth()->user()->username,
             'email' => auth()->user()->email,
             'date' => auth()->user()->created_at,
+            'place' => auth()->user()->place,
+            'd' => auth()->user()->date,
+            'm' => auth()->user()->month,
+            'y' => auth()->user()->year,
+            'hp' => auth()->user()->hp,
+            'gender' => auth()->user()->gender,
+        ]);
+    }
+    public function change()
+    {
+        return view('dashboard.changeprofile', [
+            'title' => 'Dashboard',
         ]);
     }
 }

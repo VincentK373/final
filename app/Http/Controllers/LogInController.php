@@ -16,12 +16,12 @@ class LogInController extends Controller
     public function auth(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'username' => 'required',
             'password' => 'required'
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard/my-profile');
         }
         return back()->with('loginError', 'Login failed');
     }

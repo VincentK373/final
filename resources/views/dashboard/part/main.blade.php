@@ -37,7 +37,7 @@
 
 {{-- <body style="background-color: rgb(183, 141, 230)"> --}}
 
-<body style="background-color: white">
+<body style="font-family: 'poppins'; background-color: white">
 
     {{-- <body style="background: linear-gradient(rgb(147, 157, 254), rgb(199, 142, 255));"> --}}
 

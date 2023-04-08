@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-    style="font-family: 'Times New Roman', Times, serif; font-size: large">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="font-family: 'poppins'; font-size: large">
     <div class="container">
         <a class="navbar-brand" style="color: black"href="/">
             <span style="color: white; font-size:larger"><b>On</b></span><span
@@ -22,11 +21,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Welcome Back, {{ auth()->user()->name }}
+                            Welcome Back, {{ auth()->user()->username }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-window-reverse"></i>
-                                    Dashboard</a></li>
+                            <li><a class="dropdown-item" href="/"><i class="bi bi-layout-text-window-reverse"></i>
+                                    Home</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

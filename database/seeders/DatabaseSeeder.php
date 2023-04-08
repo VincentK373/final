@@ -17,25 +17,18 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(20)->create();
         Article::factory(200)->create();
-        User::create([
-            'name' => 'Vincent',
-            'username' => 'v234',
-            'email' => 'vincent@gmail.com',
-            'password' => bcrypt('password')
-        ]);
-
 
         Category::create([
-            'name' => 'Programming',
-            'slug' => 'programming'
+            'name' => 'Ekonomi',
+            'slug' => 'ekonomi'
         ]);
         Category::create([
-            'name' => 'Web',
-            'slug' => 'web'
+            'name' => 'Sejarah',
+            'slug' => 'sejarah'
         ]);
         Category::create([
-            'name' => 'Business',
-            'slug' => 'business'
+            'name' => 'Matematika',
+            'slug' => 'matematika'
         ]);
     }
 }

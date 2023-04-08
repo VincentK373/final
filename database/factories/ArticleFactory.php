@@ -23,8 +23,8 @@ class ArticleFactory extends Factory
             'body' => collect(fake()->paragraphs(mt_rand(4, 10)))->map(function ($p) {
                 return "<p>$p</p>";
             })->implode(''),
-            'category_id' => mt_rand(1, 2),
-            'user_id' => mt_rand(1, 8),
+            'category_id' => mt_rand(1, 3),
+            'user_id' => mt_rand(1, 2),
         ];
     }
 }

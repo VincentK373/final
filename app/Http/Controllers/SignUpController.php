@@ -19,15 +19,20 @@ class SignUpController extends Controller
     {
         // return $request->all();
         $validated = $request->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|min:3|max:25|unique:users',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:8|max:255'
+            'password' => 'required|min:8|max:255',
+            'username' => 'required|min:3|max:25|unique:users',
+            'place' => 'required',
+            'date' => 'required',
+            'month' => 'required',
+            'year' => 'required',
+            'hp' => 'required',
+            'gender' => 'required',
         ]);
-        // $validated['password']=bcrypt($validated['password']);
         $validated['password'] = Hash::make($validated['password']);
         User::create($validated);
-        // $request->session()->flash('success', 'Registration Success');
         return redirect('/login')->with('success', 'Registration success');
     }
 }

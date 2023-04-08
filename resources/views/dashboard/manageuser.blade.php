@@ -5,13 +5,13 @@
             @include('dashboard.part.sidebar')
         </div>
         <div class="kanan">
-            <h1><b>Manage Posts</b></h1>
+            <h1><b>Manage Users</b></h1>
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="table" style="max-height: 250px; overflow:auto; margin-bottom:10px">
+            <div class="table" style="max-height: 300px; overflow:auto; margin-bottom:10px">
                 <table>
                     <thead>
                         <tr>
@@ -25,7 +25,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td style="text-align: center">{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->username }}</td>
                                 <td style="text-align: center">{{ $user->email }}</td>
                                 <td style="width: 25%;"><a href="" class="btn btn-danger">Ban</a> <a href=""
                                         class="btn btn-success">Unban</a></td>

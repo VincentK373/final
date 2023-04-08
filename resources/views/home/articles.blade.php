@@ -1,6 +1,6 @@
 @extends('home.part.main')
 @section('container')
-    <div class="container2" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container2" style="font-family: 'poppins'">
         <div class="row justify-content-center mb-3" style="margin-top: 60px">
             <div class="card text-bg-dark" style="width: 100%">
                 <img src="https://source.unsplash.com/1400x500?library+dark" alt="..." style="width:100%; height:auto;">
@@ -57,7 +57,9 @@
                                     </a>
                                 </div>
                                 @if ($article->image)
-                                    <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid" alt="..."
+                                    <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid"
+                                        style="max-height: 300px; overflow:
+                                    hidden alt="..."
                                         style="margin: 10px; border-radius: 20px; border: 2px solid black">
                                 @else
                                     <img src="https://source.unsplash.com/500x300?{{ $article->category->name }}"
@@ -81,7 +83,7 @@
                                     </a>
                                     <p>
                                         <small>By.
-                                            <a href="/articles?author={{ $article->author->username }}"
+                                            <a href="/articles?author={{ $article->author->first_name }}"
                                                 class="text-decoration-none"
                                                 style="color: black"><b><u>{{ $article->author->name }}</u></b></a>
                                             <span style="float: right">
@@ -164,9 +166,9 @@
             }
 
             /* span.page-link {
-                                                                background-color: red;
-                                                                color: black
-                                                            } */
+                                                                                background-color: red;
+                                                                                color: black
+                                                                            } */
 
             .pagination>.page-item.active>.page-link {
                 background-color: black;

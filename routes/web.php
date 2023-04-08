@@ -43,7 +43,7 @@ Route::get('/dashboard/checkslug', [DashboardController::class, 'checkslug'])->m
 
 Route::get('/dashboard/manage-users', function () {
     return view('dashboard.manageuser', [
-        'users' => User::orderBy('name')->get(),
+        'users' => User::orderBy('username')->get(),
         'title' => 'Dashboard',
     ]);
 })->middleware('auth');
@@ -51,7 +51,7 @@ Route::get('/dashboard/manage-users', function () {
 Route::get('/dashboard/manage-categories', [CategoryController::class, 'manage'])->middleware('auth');
 Route::post('/dashboard/manage-categories', [CategoryController::class, 'store'])->middleware('auth');
 
-Route::post('/dashboard/change-profile', [DashboardController::class, 'change'])->middleware('auth');
+Route::get('/dashboard/change-profile', [DashboardController::class, 'change'])->middleware('auth');
 
 Route::get('/dashboard/my-profile', [DashboardController::class, 'profile'])->middleware('auth');
 // Route::delete('/dashboard/manage-categories/{slug}', CategoryController::class, 'delete')->middleware('auth');
