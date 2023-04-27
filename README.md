@@ -1,5 +1,5 @@
-<h1>Databasenya bisa generate pakai "php artisan migrate:fresh --seed", ketentuan data bisa diubah di DatabaseSeeder</h1>
-
+<h1>1. Databasenya bisa generate pakai "php artisan migrate:fresh --seed", ketentuan data bisa diubah di DatabaseSeeder</h1>
+<h1>2. Keranjang faktur belum dibuat</h1>
 
 
 
