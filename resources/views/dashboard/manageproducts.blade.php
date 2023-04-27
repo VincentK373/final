@@ -5,30 +5,47 @@
             @include('dashboard.part.sidebar')
         </div>
         <div class="kanan">
-            <h1><b>Manage Users</b></h1>
+            <h1><b>Manage Products</b></h1>
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="table" style="max-height: 300px; overflow:auto; margin-bottom:10px">
+            <div class="table" style="max-height: 250px; overflow:auto; margin-bottom:10px">
                 <table>
                     <thead>
                         <tr>
                             <th style="width: 5%;">No.</th>
-                            <th style="width: 35%;">Name</th>
-                            <th style="width: 35%;">Email</th>
-                            <th style="width: 30%;">Ban/Unban</th>
+                            <th style="width: 30%;">Name</th>
+                            <th style="width: 15%;">Price</th>
+                            <th style="width: 15%;">Quantity</th>
+                            <th style="width: 15%;">Category</th>
+                            <th style="width: 20%;">Action</th>
                         </tr>
                     </thead>
                     <tbody style="justify-content: center">
-                        @foreach ($users as $user)
+                        @foreach ($products as $product)
                             <tr>
                                 <td style="text-align: center">{{ $loop->iteration }}</td>
-                                <td>{{ $user->username }}</td>
-                                <td style="text-align: center">{{ $user->email }}</td>
-                                <td style="width: 25%;"><a href="" class="btn btn-danger">Ban</a> <a href=""
-                                        class="btn btn-success">Unban</a></td>
+                                <td>{{ $product->name }}</td>
+                                <td>Rp{{ number_format($product->price, 2, ',', '.') }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td style="text-align: center">{{ $product->category->name }}</td>
+                                <td style="text-align: center">
+                                    <a href="/dashboard/{{ $product->slug }}" class="badge bg-info">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="/dashboard/{{ $product->slug }}/edit" class="badge bg-warning">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <form action="/dashboard/{{ $product->slug }}" method="POST" class="d-inline"
+                                        onclick="return confirm('Are You Sure?')">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="badge bg-danger border-0"><i class="bi bi-trash3"></i></button>
+                                    </form>
+
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

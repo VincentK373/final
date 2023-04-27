@@ -5,16 +5,16 @@
             @include('dashboard.part.sidebar')
         </div>
         <div class="kanan">
-            <h1><b>Edit Post</b></h1>
+            <h1><b>Edit Product</b></h1>
             <div class="form col-lg-12">
-                <form method="POST" action="/dashboard/{{ $article->slug }}" class="mb-5" enctype="multipart/form-data">
+                <form method="POST" action="/dashboard/{{ $product->slug }}" class="mb-5" enctype="multipart/form-data">
                     @method('put')
                     @csrf
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                            name="title" required autofocus value="{{ old('title', $article->title) }}">
-                        @error('title')
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                            name="name" required autofocus value="{{ old('name', $product->name) }}">
+                        @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <label for="slug" class="form-label">Slug</label>
                         <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug"
-                            name="slug" value="{{ old('slug', $article->slug) }}">
+                            name="slug" value="{{ old('slug', $product->slug) }}">
                         @error('slug')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -36,16 +36,16 @@
                         <select class="form-select" name="category_id">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
-                                    {{ old('category_id', $article->category_id) == $category->id ? 'selected' : '' }}>
+                                    {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
                                     {{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
-                        <input type="hidden" name="oldImg" value="{{ $article->image }}">
-                        @if ($article->image)
-                            <img src="{{ asset('storage/' . $article->image) }}"
+                        <input type="hidden" name="oldImg" value="{{ $product->image }}">
+                        @if ($product->image)
+                            <img src="{{ asset('storage/' . $product->image) }}"
                                 class="img-preview img-fluid mb-3 col-sm-5 d-block">
                         @else
                             <img class="img-preview img-fluid mb-3 col-sm-5">
@@ -58,27 +58,47 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="body" class="form-label">Body</label>
-                        @error('body')
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
+                            name="price" required autofocus value="{{ old('price', $product->price) }}">
+                        @error('price')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control @error('quantity') is-invalid @enderror" id="quantity"
+                            name="quantity" required autofocus value="{{ old('quantity', $product->quantity) }}">
+                        @error('quantity')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="des" class="form-label">Description</label>
+                        @error('des')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <input id="body" type="hidden" name="body" value="{{ old('body', $article->body) }}">
-                        <trix-editor input="body"
+                        <input id="des" type="hidden" name="des" value="{{ old('des', $product->des) }}">
+                        <trix-editor input="des"
                             style="max-height: 120px; overflow:auto; min-height:120px; background-color:white">
                         </trix-editor>
                     </div>
 
                     <button type="submit" class="btn btn-primary"
                         style="border-radius: 10px; width:100px; background-color:rgb(167, 78, 173); color:black; border:0cm">Update
-                        Post</button>
+                        Product</button>
                 </form>
             </div>
             <script>
-                const title = document.querySelector('#title');
+                const name = document.querySelector('#name');
                 const slug = document.querySelector('#slug');
 
-                title.addEventListener('change', function() {
-                    fetch('/dashboard/checkslug?title=' + title.value)
+                name.addEventListener('change', function() {
+                    fetch('/dashboard/checkslug?name=' + name.value)
                         .then(response => response.json())
                         .then(data => slug.value = data.slug)
                 });
@@ -101,6 +121,10 @@
         </div>
 
         <style>
+            label {
+                font-weight: bold
+            }
+
             .kanan {
                 float: right;
                 width: 70%;

@@ -3,38 +3,84 @@
     <div class="container" style="margin-top: 90px">
         <div class="row my-3" style="justify-content: center">
             <div class="col-md-8">
-                <h1>{{ $article->title }}</h1>
-                <small>
-                    {{ $article->updated_at->format('l, d-m-Y h:i A') }}
-                </small>
-                <br>
-                <br>
                 <a href="/dashboard" class="btn btn-success"><i class="bi bi-arrow-bar-left" style="font-weight: bold;"></i>Back
-                    to Manage Posts</a>
-                <a href="/dashboard/{{ $article->slug }}/edit" class="btn btn-warning" style="color:white"><i
+                    to Manage Products</a>
+                <a href="/dashboard/{{ $product->slug }}/edit" class="btn btn-warning" style="color:white"><i
                         class="bi bi-pencil-square"></i>Edit</a>
-                <form action="/dashboard/{{ $article->slug }}" method="POST" class="d-inline"
+                <form action="/dashboard/{{ $product->slug }}" method="POST" class="d-inline"
                     onclick="return confirm('Sure?')">
                     @method('delete')
                     @csrf
                     <button class="btn btn-danger"><i class="bi bi-trash3"></i>Delete</button>
                 </form>
+                <br>
+                <br>
+                <h6>Last Update: <small>
+                        {{ $product->updated_at->format('l, d-m-Y h:i A') }}
+                    </small></h6>
 
-                @if ($article->image)
+
+                @if ($product->image)
                     <div style="max-height: 350px; overflow:hidden;">
-                        <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid mt-3" alt="...">
+                        <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid mt-3" alt="...">
                     </div>
                 @else
-                    <img src="https://source.unsplash.com/1200x400?{{ $article->category->name }}" class="img-fluid mt-3"
+                    <img src="https://source.unsplash.com/1200x400?{{ $product->name }}" class="img-fluid mt-3"
                         alt="...">
                 @endif
 
                 <article class="my-3" style="text-indent: 1em;">
-                    {!! $article->body !!}
-                    {{-- Untuk menjalankan tag html --}}
+                    <h3>{{ $product->name }}</h3>
+                    <aside>
+                        <details>
+                            <summary style="font-weight: bold">
+                                Description
+                            </summary>
+                            <article style="text-indent: 3em">
+                                {!! $product->des !!}
+                                <br>
+                            </article>
+                        </details>
+                    </aside>
+                    <aside>
+                        <details>
+                            <summary style="font-weight: bold">
+                                Category
+                            </summary>
+                            <p>
+                                {{ $product->category->name }}
+                            </p>
+                        </details>
+                    </aside>
+                    <aside>
+                        <details>
+                            <summary style="font-weight: bold">
+                                Price
+                            </summary>
+                            <p>
+                                Rp{{ number_format($product->price, 2, ',', '.') }}
+                            </p>
+                        </details>
+                    </aside>
+                    <aside>
+                        <details>
+                            <summary style="font-weight: bold">
+                                Quantity
+                            </summary>
+                            <p>
+                                {{ $product->quantity }}
+                            </p>
+                        </details>
+                    </aside>
+
                 </article>
 
             </div>
         </div>
     </div>
+    <style>
+        p {
+            text-indent: 3em
+        }
+    </style>
 @endsection

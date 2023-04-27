@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Article;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -16,19 +16,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(20)->create();
-        Article::factory(200)->create();
+        Product::factory(200)->create();
 
         Category::create([
-            'name' => 'Ekonomi',
-            'slug' => 'ekonomi'
+            'name' => 'Electronics',
+            'slug' => 'electronics'
         ]);
         Category::create([
-            'name' => 'Sejarah',
-            'slug' => 'sejarah'
+            'name' => 'Food',
+            'slug' => 'food'
         ]);
         Category::create([
-            'name' => 'Matematika',
-            'slug' => 'matematika'
+            'name' => 'Clothes',
+            'slug' => 'clothes'
         ]);
     }
 }

@@ -13,7 +13,7 @@
                 <table>
                     <tr>
                         <th>Name</th>
-                        <td>{{ $first_name }} {{ $last_name }}</td>
+                        <td>{{ $name }}</td>
                     </tr>
                     <tr>
                         <th>Username</th>
@@ -24,27 +24,22 @@
                         <td>{{ $email }}</td>
                     </tr>
                     <tr>
-                        <th>Gender</th>
-                        <td>{{ $gender }}</td>
-                    </tr>
-                    <tr>
-                        <th>Place/Day of Birth</th>
-                        <td>{{ $place }}, {{ $d }}-{{ $m }}-{{ $y }}</td>
-                    </tr>
-                    <tr>
                         <th>Phone</th>
-                        <td>{{ $hp }}</td>
+                        <td>{{ $phone }}</td>
                     </tr>
                     <tr>
-                        <th>Member Since</th>
-                        <td>{{ $date }}</td>
+                        <th>Status</th>
+                        <td>
+                            @if ($status === null)
+                                Member
+                            @else
+                                Admin
+                            @endif
+                        </td>
                     </tr>
                 </table>
 
             </div>
-            <a href="/dashboard/change-profile" class="btn btn-success">Change
-                Profile</a>
-            <div class="clear"></div>
         </div>
 
         <style>

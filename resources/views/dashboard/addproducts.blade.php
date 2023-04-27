@@ -5,15 +5,15 @@
             @include('dashboard.part.sidebar')
         </div>
         <div class="kanan">
-            <h1><b>Add Post</b></h1>
+            <h1><b>Add Product</b></h1>
             <div class="form col-lg-12">
                 <form method="POST" action="/dashboard" class="mb-5" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                            name="title" required autofocus value="{{ old('title') }}">
-                        @error('title')
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                            name="name" required autofocus value="{{ old('name') }}">
+                        @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -51,12 +51,32 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="body" class="form-label">Body</label>
-                        @error('body')
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
+                            name="price" required autofocus value="{{ old('price') }}">
+                        @error('price')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control @error('quantity') is-invalid @enderror" id="quantity"
+                            name="quantity" required autofocus value="{{ old('quantity') }}">
+                        @error('quantity')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="des" class="form-label">Description</label>
+                        @error('des')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <input id="body" type="hidden" name="body" value="{{ old('body') }}">
-                        <trix-editor input="body"
+                        <input id="des" type="hidden" name="des" value="{{ old('des') }}">
+                        <trix-editor input="des"
                             style="max-height: 120px; overflow:auto; min-height:120px; background-color:white">
                         </trix-editor>
                     </div>
@@ -67,11 +87,11 @@
                 </form>
             </div>
             <script>
-                const title = document.querySelector('#title');
+                const name = document.querySelector('#name');
                 const slug = document.querySelector('#slug');
 
-                title.addEventListener('change', function() {
-                    fetch('/dashboard/checkslug?title=' + title.value)
+                name.addEventListener('change', function() {
+                    fetch('/dashboard/checkslug?name=' + name.value)
                         .then(response => response.json())
                         .then(data => slug.value = data.slug)
                 });

@@ -1,9 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="font-family: 'poppins'; font-size: large">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+    style="font-family: 'poppins'; font-size: large; background-color:#1f271b">
     <div class="container">
-        <a class="navbar-brand" style="color: black"href="/">
-            <span style="color: white; font-size:larger"><b>On</b></span><span
-                style="color:rgb(183, 141, 230); ; font-size:larger"><b>Learn
-                    |</b></span>
+        <a class="navbar-brand" href="/">
+            <span style="color: rgb(255, 255, 255); font-size:larger">
+                <b style="color: rgb(0, 104, 71)">Me</b><b>xi</b><b style="color: rgb(206, 17, 38)">co</b>
+                <b>Storage | </b>
+            </span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +21,7 @@
                     <a class="nav-link {{ Request::is('about*') ? 'active' : '' }}" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('articles*') ? 'active' : '' }}" href="/articles">Articles</a>
+                    <a class="nav-link {{ Request::is('articles*') ? 'active' : '' }}" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}"
@@ -39,11 +41,6 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-person-fill-gear"></i>
-                                    Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf
@@ -55,7 +52,7 @@
                         </ul>
                     </li>
                 @else
-                    <li class="nav-item">
+                    <li class="nav-item" style="font-style:poppins">
                         <a href="/login" class="nav-link active">
                             <Log class="bi bi-box-arrow-in-right"> Log In
                         </a>

@@ -19,20 +19,17 @@ class SignUpController extends Controller
     {
         // return $request->all();
         $validated = $request->validate([
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
+            'name' => 'required|max:255',
+            'username' => 'required|min:3|max:25|unique:users',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8|max:255',
-            'username' => 'required|min:3|max:25|unique:users',
-            'place' => 'required',
-            'date' => 'required',
-            'month' => 'required',
-            'year' => 'required',
-            'hp' => 'required',
-            'gender' => 'required',
+            'phone' => ['required', 'regex:/^08\d{9,11}$/'],
         ]);
+
+        $username = $request->input('username');
+
         $validated['password'] = Hash::make($validated['password']);
         User::create($validated);
-        return redirect('/login')->with('success', 'Registration success');
+        return redirect('/login')->with('success', "Registration: $username Success");
     }
 }

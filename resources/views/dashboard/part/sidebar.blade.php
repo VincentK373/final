@@ -1,14 +1,15 @@
 <div class="sidebar">
-    <a href="/dashboard/my-profile" class="sidebar-link {{ Request::is('dashboard/my-profile') ? 'active' : '' }}">My
+    <a href="/profile" class="sidebar-link {{ Request::is('profile') ? 'active' : '' }}">My
         Profile</a>
-    <a href="/dashboard/create" class="sidebar-link {{ Request::is('dashboard/create') ? 'active' : '' }}">Add
-        Posts</a>
-    <a href="/dashboard" class="sidebar-link {{ Request::is('dashboard') ? 'active' : '' }}">Manage Posts</a>
-    <a href="/dashboard/manage-users"
-        class="sidebar-link {{ Request::is('dashboard/manage-users') ? 'active' : '' }}">Manage Users</a>
-    <a href="/dashboard/manage-categories"
-        class="sidebar-link {{ Request::is('dashboard/manage-categories') ? 'active' : '' }}">Manage
-        Categories</a>
+    @can('admin')
+        <a href="/dashboard"
+            class="sidebar-link {{ Request::is('dashboard*') && !Request::is('dashboard/create*') ? 'active' : '' }}">Manage
+            Products</a>
+        <a href="/dashboard/create" class="sidebar-link {{ Request::is('dashboard/create*') ? 'active' : '' }}">Add Product</a>
+        <a href="/manage-categories" class="sidebar-link {{ Request::is('manage-categories*') ? 'active' : '' }}">Manage
+            Categories</a>
+    @endcan
+
 </div>
 
 <style>

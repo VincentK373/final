@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="font-family: 'poppins'; font-size: large">
     <div class="container">
-        <a class="navbar-brand" style="color: black"href="/">
-            <span style="color: white; font-size:larger"><b>On</b></span><span
-                style="color:rgb(183, 141, 230); ; font-size:larger"><b>Learn
-                    |</b></span>
+        <a class="navbar-brand" href="/">
+            <span style="color: rgb(255, 255, 255); font-size:larger">
+                <b style="color: rgb(0, 104, 71)">Me</b><b>xi</b><b style="color: rgb(206, 17, 38)">co</b>
+                <b>Storage | </b>
+            </span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,8 +13,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}"
-                        href="/home"aria-current="page" href="/">Dashboard</a>
+                    <a class="nav-link {{ Request::is('dashboard*' || 'manage*') ? 'active' : '' }}"
+                        href="/dashboard"aria-current="page" href="/">Dashboard</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
@@ -26,11 +27,6 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/"><i class="bi bi-layout-text-window-reverse"></i>
                                     Home</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-person-fill-gear"></i>
-                                    Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

@@ -26,8 +26,8 @@
                                 <td style="text-align: center">{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td style="text-align:center">
-                                    <form action="/dashboard/manage-categories/{{ $category->slug }}" method="POST"
-                                        class="d-inline" onclick="return confirm('Are You Sure?')">
+                                    <form action="/manage-categories/{{ $category->slug }}" method="POST" class="d-inline"
+                                        onclick="return confirm('Are You Sure?')">
                                         @method('delete')
                                         @csrf
                                         <button class="badge bg-danger border-0"><i class="bi bi-trash3"></i></button>
@@ -45,7 +45,7 @@
 
             <div class="form col-lg-8">
                 <main class="form-registration w-100 m-auto">
-                    <form method="POST" action='/dashboard/manage-categories' class="mb-5">
+                    <form method="POST" action='/manage-categories' class="mb-5">
                         @csrf
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
